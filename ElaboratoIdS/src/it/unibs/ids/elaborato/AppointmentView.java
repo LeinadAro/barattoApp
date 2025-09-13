@@ -9,6 +9,7 @@ public class AppointmentView {
 	public static final String OFFERTA_RITIRATA = "Offerta ritirata con successo";
 	private static final String NO_OFFERTE_ATTIVE = "Non ci sono Offerte attive.";
 	public static final String CATEGORIA_INVALIDA = "La Categoria inserita non e' valida!";
+	public static final String CATEGORIA_SENZA_OFFERTE = "La Categoria selezionata non ha offerte!";
 	
 	public static void viewAppointments(AppointmentBaseController ac) {
 		ac.getAppuntamenti().stream().forEach(a -> {
@@ -82,6 +83,10 @@ public class AppointmentView {
 	
 	public static void stampaCategoriaInvalida() {
 		System.out.println(CATEGORIA_INVALIDA);
+	}
+	
+	public static void stampaCategoriaSenzaOfferte() {
+		System.out.println(CATEGORIA_SENZA_OFFERTE);
 	}
 	
 	public static void stampaArticoliAperti(Articolo art) {

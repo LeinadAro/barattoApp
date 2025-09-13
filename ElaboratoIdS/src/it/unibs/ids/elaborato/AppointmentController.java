@@ -262,10 +262,15 @@ public class AppointmentController {
 						}
 					}
 				else {
-					AppointmentView.stampaCategoriaInvalida();
-					if(InputDati.yesOrNo("Vuoi riprovare?")) tryAgain=true;
-					else tryAgain=false;
+					if(!foglia.hasSottoCategorie()&&!categoryController.categoryHasArticoli(foglia)) {
+						AppointmentView.stampaCategoriaSenzaOfferte();
 					}
+					else {
+						AppointmentView.stampaCategoriaInvalida();
+						if(InputDati.yesOrNo("Vuoi riprovare?")) tryAgain=true;
+						else tryAgain=false;
+					}
+				}
 			}
 		}while(tryAgain);
 	}

@@ -6,14 +6,14 @@ public class UserController {
 	
 	private UserBaseController userController;
 	private CategoryController categoryController;
-	private AppointmentBaseController appointmentController;
+	private AppointmentBaseController appointmentBaseController;
 	private AppointmentController appointmentView;
 	private Utente currentUser;
 	
-	public UserController(UserBaseController controller, CategoryController categoryController, AppointmentBaseController appointmentController) {
+	public UserController(UserBaseController controller, CategoryController categoryController, AppointmentBaseController appointmentBaseController) {
 		this.userController = controller;
 		this.categoryController = categoryController;
-		this.appointmentController = appointmentController;
+		this.appointmentBaseController = appointmentBaseController;
 		this.appointmentView = new AppointmentController();
 	}
 	
@@ -70,7 +70,7 @@ public class UserController {
 					ViewUtility.printCategorie(categoryController);
 					break;
 				case 4:
-					appointmentView.makeAppointment(appointmentController);
+					appointmentView.makeAppointment(appointmentBaseController);
 					break;
 				case 5:
 					appointmentView.visualizzaOfferteFoglia(this.currentUser, categoryController);
@@ -96,7 +96,7 @@ public class UserController {
 			int choice = InputDati.leggiIntero("\n"+UserView.INSERISCI_IL_NUMERO);
 			switch(choice) {
 				case 1:
-					AppointmentView.viewAppointments(appointmentController);
+					AppointmentView.viewAppointments(appointmentBaseController);
 					break;
 				case 2:
 					ViewUtility.printCategorie(categoryController);
@@ -114,13 +114,13 @@ public class UserController {
 					appointmentView.ritiraOfferta(this.currentUser, categoryController);
 					break;
 				case 7:
-					appointmentView.creaOfferta(this.appointmentController, this.currentUser, categoryController);
+					appointmentView.creaOfferta(this.appointmentBaseController, this.currentUser, categoryController);
 					break;
 				case 8:
-					appointmentView.offerteAttive(this.currentUser, categoryController, this.appointmentController);
+					appointmentView.offerteAttive(this.currentUser, categoryController, this.appointmentBaseController);
 					break;
 				case 9:
-					appointmentView.visualizzaUltimaRisposta(this.currentUser, this.appointmentController);
+					appointmentView.visualizzaUltimaRisposta(this.currentUser, this.appointmentBaseController);
 					break;
 				case 0:
 					logoutView();
